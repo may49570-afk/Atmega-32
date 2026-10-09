@@ -1,19 +1,31 @@
 #ifndef STD_H
 #define STD_H
+
+/**
+ * @brief Defines unsigned integer data types.
+ */
 typedef unsigned char u8;//%c
 typedef unsigned short int u16;//%hu
 typedef unsigned long int u32;//%lu
 typedef unsigned long long int u64;//%llu
 
+/**
+ * @brief Defines signed integer data types.
+ */
 typedef signed char s8;//%c
 typedef signed short int s16;//%hd
 typedef signed long int s32;//%ld
 typedef signed long long int s64;//%lld
 
+/**
+ * @brief Defines floating-point data types.
+ */
 typedef float f32;//%f
 typedef double f64;//%lf
 
-
+/**
+ * @brief Defines Boolean-like constants.
+ */
 #define True 1
 #define false 0
 
