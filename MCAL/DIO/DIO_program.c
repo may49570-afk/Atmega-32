@@ -1,9 +1,23 @@
+/**
+ * @file DIO_program.c
+ * @brief Implementation of the Digital Input/Output (DIO) driver functions.
+ */
+
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD.h"
 #include "DIO_interface.h"
 #include "DIO_private.h"
 #include "DIO_config.h"
 
+/**
+ * @brief Sets the direction of a specific pin.
+ *
+ * Configures the selected pin as output, input, or input with pull-up.
+ *
+ * @param PORT The port containing the selected pin.
+ * @param PIN The pin number to be configured.
+ * @param DIR The required pin direction.
+ */
 void SetPinDir(u8 PORT,u8 PIN,u8 DIR)
 {
 	switch (DIR)
@@ -73,6 +87,14 @@ void SetPinDir(u8 PORT,u8 PIN,u8 DIR)
 
 }
 
+/**
+ * @brief Sets the direction of all pins in a port.
+ *
+ * Configures the selected port as output, input, or input with pull-up.
+ *
+ * @param PORT The port to be configured.
+ * @param DIR The required port direction.
+ */
 void SetPortDir(u8 PORT,u8 DIR)
 {
 	switch (DIR)
@@ -142,6 +164,13 @@ void SetPortDir(u8 PORT,u8 DIR)
 
 }
 
+/**
+ * @brief Sets the value of a specific output pin.
+ *
+ * @param PORT The port containing the selected pin.
+ * @param PIN The pin number to be modified.
+ * @param Val The required pin value (high or low).
+ */
 void SetPinVal(u8 PORT,u8 PIN,u8 Val)
 {
 	switch (Val)
@@ -187,6 +216,12 @@ void SetPinVal(u8 PORT,u8 PIN,u8 Val)
 	}
 }
 
+/**
+ * @brief Sets the value of an entire port.
+ *
+ * @param PORT The port to be modified.
+ * @param Val The value to be written to the port.
+ */
 void SetPortVal(u8 PORT,u8 Val)
 {
 		switch (PORT)
@@ -208,6 +243,13 @@ void SetPortVal(u8 PORT,u8 Val)
 		}
 }
 
+/**
+ * @brief Reads the value of a specific input pin.
+ *
+ * @param PORT The port containing the selected pin.
+ * @param PIN The pin number to be read.
+ * @return The value of the selected pin (0 or 1).
+ */
 u8 GetPinVal(u8 PORT , u8 PIN )
 {
 	switch (PORT)
@@ -229,6 +271,12 @@ u8 GetPinVal(u8 PORT , u8 PIN )
 	}
 }
 
+/**
+ * @brief Reads the input value of an entire port.
+ *
+ * @param PORT The port to be read.
+ * @return The current input value of the selected port.
+ */
 u8 GetPortVal(u8 PORT)
 {
 	switch (PORT)
@@ -250,6 +298,14 @@ u8 GetPortVal(u8 PORT)
 	}
 }
 
+/**
+ * @brief Toggles the value of a specific output pin.
+ *
+ * Changes the pin value from high to low or from low to high.
+ *
+ * @param PORT The port containing the selected pin.
+ * @param PIN The pin number to be toggled.
+ */
 void TogPinVal(u8 PORT,u8 PIN)
 {
 		switch (PORT)
@@ -271,6 +327,13 @@ void TogPinVal(u8 PORT,u8 PIN)
 		}
 }
 
+/**
+ * @brief Toggles the output values of an entire port.
+ *
+ * Inverts all bits in the selected port register.
+ *
+ * @param PORT The port whose output values will be inverted.
+ */
 void TogPortDir(u8 PORT)
 {
 		switch (PORT)
@@ -283,7 +346,7 @@ void TogPortDir(u8 PORT)
 			break;
 		case DIO_PORTC :
 			PORTC=~PORTC ;
-		    break;
+			break;
 		case DIO_PORTD :
 			PORTD=~PORTD ;
 			break;
@@ -291,4 +354,3 @@ void TogPortDir(u8 PORT)
 			break;
 		}
 }
-
